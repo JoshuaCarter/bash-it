@@ -5,6 +5,7 @@
 - CLI Shows `PWD USER BRANCH+STATUS NODE_VERSION AWS_PROFILE`
 - Auto calls `nvm use on change into dir with .nvmrc`.
 - Profile with preselected packages, etc.
+- Some aliases.
 
 ### Instructions:
 1. Install `bash-it` per https://github.com/Bash-it/bash-it#installation
