@@ -66,8 +66,23 @@ function __powerline_node_prompt() {
 	fi
 	PREV_PWD=$PWD
 
-	node_version="$(node_version_prompt)"
+	node_version="$(node -v)"
 	[[ -n "${node_version}" ]] && echo "${NODE_CHAR}${node_version}|${NODE_THEME_PROMPT_COLOR}"
+}
+
+function __powerline_npm_prompt() {
+	local npm_version=""
+
+	# auto call nvm use on dir change when .nvmrc is present
+	if [[ $PWD != $PREV_PWD ]]; then
+		if [[ -f ".nvmrc" ]]; then
+			eval "nvm use > /dev/null"
+		fi
+	fi
+	PREV_PWD=$PWD
+
+	npm_version="$(npm -v)"
+	[[ -n "${npm_version}" ]] && echo "${NPM_CHAR}v${npm_version}|${NPM_THEME_PROMPT_COLOR}"
 }
 
 function __powerline_ruby_prompt() {
